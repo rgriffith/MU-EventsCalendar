@@ -1,0 +1,73 @@
+Our folder structure for events in Cascade is as follows:
+
+calendar
+--events
+---YYYY
+----MM
+-----images
+---pending
+----images
+--lib
+---calendar.css
+---university_calendar.php
+--index
+--eventdetails
+--eventrequest
+--rss.php
+
+The current year (and future years) has an index block assigned to it, which will build the current year's XML. XML files
+from previous years are archived and anything older than a year is removed completely from Cascade, including images.
+
+The "pending" folder is where submissions to the event request form are created. The process for the form uses
+web services to "build" an event and create a pending event and add it to the pending folder. The user you specify
+in the WECalendarEvent.php class must have write access to the pending folder (and the images folder if you choose 
+to use images). Once a pending event is added, someone from our Marketing departments moves the event into the appropriate
+year/month folder.
+
+
+
+
+INCLUDED CLASS/SCRIPT FILES (calendar/lib):
+
+cascadeWebEvent.php
+	Abstract class that creates the SOAP request to Cascade's webservices and provides wrapper functions to create, read, edit
+	assets within Cascade.
+
+WECalendarEvent.php
+	Webevent class that extends the abstract class above and "builds" the pending event for creation in Cascade. The contents of
+	the page come from the user's submission to the event request form.
+
+mucalendar.php
+	Abstract class that defines the various methods and variables and provides common functions relating to our various calendars.
+
+university_calendar.php
+	Calendar class that extends the abstract class above. This class reads the appropriate events XML file and will building an array of
+	upcoming and ongoing events based on the following criteria: date (DD-MM-YYYY), category, query, mode (i.e. day, week, month).
+
+rss.php
+	Utilizes the calendar class and user input to create an RSS feed of upcoming events.
+	
+	
+	
+
+INCLUDED CASCADE FILES (cascade_assets):
+
+events_xml_xslformat.xsl 
+	The XSL Format that generates an XML dump of the current year's events 
+	using an index block that is assigned at the year level.
+
+
+events_xml_template.xml
+	The template for the year's XML file. The DEFAULT region is assigned the above XSL.
+
+calendar_event_datadefinition.xml
+	The data definition for each individual event.
+	
+	Each event also has a custom metadata set that has the following inline fields:
+		Title (required)
+		Start Date (start-date) (mm/dd/yyyy | required)
+		End Date (end-date) (mm/dd/yyyy)
+		Start Time (start-time) (hh:mm AM/PM)
+		End Time (end-time) (hh:mm AM/PM)
+		
+

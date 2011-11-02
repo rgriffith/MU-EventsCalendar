@@ -1,0 +1,36 @@
+#upcoming-events-tools{width:150px}
+#event-tools-rss{height:16px;position:absolute;top:-2px;right:0}
+#event-details{border:1px solid #f2f2f2;height:1%;overflow:hidden;border-width:1px 0;margin:10px 0;padding:10px 10px 0}
+#event-details dt{clear: left;float:left;width:35%;margin:0;padding:2px 0}
+#event-details dd{float:left;width:65%;margin:0;padding:2px 0}
+#event-description{margin-top:20px}
+dl.cal-events-wrapper{clear:both;overflow:hidden;width:100%;margin:0;padding:0}
+dl.cal-events-wrapper dt.cal-events-date{color:#707070;float:left;font-size:1.1em;font-weight:700;left:0;position:absolute;text-align:center;text-transform:uppercase;width:45px;z-index:999;margin:5px 0 0;padding:0}
+dl.cal-events-wrapper dt.cal-events-date strong,dl.cal-events-wrapper dt.cal-events-date b{color:#404040;display:block;font-size:1.8em;line-height:.75em}
+dl.cal-events-wrapper dt.cal-events-date span{font-size:.92em;font-weight:400}
+dl.cal-events-wrapper dd.cal-events-list{border-left:1px solid #ddd;float:right;position:relative;width:41em;z-index:1;margin:0 0 -999px;padding:0 0 999px}
+dl.cal-events-wrapper dd.cal-events-list span.cal-date-carrot{background:transparent url(img/cal-date-carrot-white.gif) no-repeat top left;left:-7px;position:absolute;top:5px;width:11px}
+dl.cal-events-wrapper dd.cal-events-list span.cal-date-carrot.zebra{background-image:url(img/cal-date-carrot-gray.gif)}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event{background-color:#fff;margin:0;padding:10px 10px 0}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event.zebra{background-color:#f2f2f2}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event dt{clear:both;cursor:pointer;font-size:1em;position:relative;margin:0;padding:0 10px 10px 0}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event dt a{border:none}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event em,dl.cal-events-wrapper dd.cal-events-list dl.cal-event i{color:#999;font-style:italic}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event a{font-weight:400}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event dd{display:none;font-size:1em;overflow:auto;margin:0;padding:0}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event .cal-listing-content{font-size:.92em}
+dl.cal-events-wrapper dd.cal-events-list dl.cal-event .cal-listing-image{float:right;width:100px;margin:0 0 10px 10px}
+#cal-search{margin-bottom:10px}
+.cal-minical{border:none;border-collapse:collapse;color:#fff;margin:0}
+.cal-minical_p{margin-bottom:.83em;text-align:center}
+.cal-minical_p a{color:#069;font-weight:700;text-transform:uppercase}
+.cal-minical_p a:hover{color:#303030}
+.cal-minical tr td{background-color:#fff;border:1px solid #ddd;font-size:1.2em;line-height:2.67em;text-align:center;vertical-align:middle;width:2.83em;padding:0!important}
+.cal-minical tr td a{border:none!important;display:block;line-height:2.67em;text-align:center;text-decoration:none;width:100%}
+.cal-minical tr td a.alt-month{color:#9dc1d3!important}
+.cal-minical tr td a:hover{background-color:#ddd;color:#000!important}
+.cal-minical tr td.current{background-color:#e6e6e6;color:#666;font-weight:700}
+.cal-minical tr td.current a{border:none;color:#000;font-weight:700}
+.cal-minical .header th{border:none;color:#303030;font-size:1.4em;text-align:center}
+.cal-minical th a img{border:none!important;margin:.5em 0!important}
+.cal-minical .month th{border:none;color:#000;font-size:1.6em;line-height:1em;vertical-align:middle;padding:0}

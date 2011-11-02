@@ -1,0 +1,38 @@
+<system-data-structure>
+  <group identifier="audience" label="Audience">
+    <text type="checkbox" identifier="applicable-audiences" label="Applicable Calendars" restrict-to-groups="administration, Calendar Admin, Cultural Calendar, Academic Calendar">
+      <checkbox-item value="Academic"/>
+      <checkbox-item value="Athletics"/>
+      <checkbox-item value="Cultural"/>
+      <checkbox-item value="Dining"/>
+      <checkbox-item value="MU-Lancaster"/>     
+      <checkbox-item value="Music"/>      
+      <checkbox-item value="Student"/>
+      <checkbox-item value="University"/>
+    </text>
+    <text type="radiobutton" identifier="homepage" label="Display on Homepage?" restrict-to-groups="administration, Calendar Admin, Cultural Calendar, Academic Calendar" default="No">
+      <radio-item value="Yes"/>
+      <radio-item value="No"/>
+    </text>
+  </group>
+  <group identifier="event-descriptions" label="Descriptions">
+    <text multi-line="true" identifier="short-description" label="Short Description" required="true" rows="5" cols="40"/>
+    <text wysiwyg="true" identifier="full-description" label="Full Description" required="true"/>
+  </group>
+  <text identifier="event-location" label="Event Location"/>
+  <group identifier="event-image" label="Images">
+    <asset type="file" identifier="thumb" label="Thumbnail"/>
+    <asset type="file" identifier="large" label="Full Size"/>
+  </group>
+  <group identifier="event-contact" label="Event Contact">
+    <text identifier="name" label="Name" required="true"/>
+    <text identifier="phone" label="Phone" required="true"/>
+    <text identifier="email" label="Email" required="true"/>
+  </group>
+  <group identifier="related" label="Related Link" multiple="true">
+    <text identifier="link-name" label="Link Description"/>
+    <asset type="page" identifier="link-page" label="Internal Page"/>
+    <asset type="file" identifier="link-file" label="- or - Internal File"/>
+    <text identifier="link-url" label="- or - External URL" default="http://"/>
+  </group>
+</system-data-structure>
