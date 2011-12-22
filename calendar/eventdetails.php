@@ -1,20 +1,25 @@
-<?
-    session_start();
+<?php
+	session_start();
     
-    // Try to grab the date that the user was looking prior to getting here.
-    // This will help us search the appropriate XML file.
-    preg_match('/date=([0-9]{2}-[0-9]{2}-[0-9]{4})/', $_SESSION['QUERY_STRING'], $matches);
+    // If a date was specified, there is a potential it may be from another year, 
+    // so we need to override the _SESSION date.
+    if (isset($_GET['date'])) {
+    	$time_now = getdate();
+    	$time_now = mktime(0, 0, 0, $time_now['mon'], $time_now['mday'], $time_now['year']);
+    	$args['date'] = preg_match('/^[0-9]{2}-[0-9]{2}-[0-9]{4}$/', $_GET['date']) ? $_GET['date'] : $time_now;
+    } else {    
+		// Try to grab the date that the user was looking prior to getting here.
+		// This will help us search the appropriate XML file.
+		preg_match('/date=([0-9]{2}-[0-9]{2}-[0-9]{4})/', $_SESSION['QUERY_STRING'], $matches);
+	    $args['date'] = $matches[1];
+	}
         
     require_once('lib/university_calendar.php');    
     
-	// Define the URL for the mini calendar and the server path to the calendar.
-	$args['urlToCalendar'] = 'http://www.millersville.edu/calendar/';
-	$args['pathToCalendar'] = $_SERVER['DOCUMENT_ROOT'].'/fornathan/calendar/';
+    $args['urlToCalendar'] = 'http://www.millersville.edu/calendar/';
+    $args['pathToCalendar'] = $_SERVER['DOCUMENT_ROOT'].'/calendar/';
     
-    // Was a date specified?
-    $args['date'] = $matches[1];
-	
-	// Initiate the calendar.
+
     $cal = new UniversityCalendar($args);
 ?>
 
