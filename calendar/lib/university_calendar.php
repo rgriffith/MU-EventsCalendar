@@ -1,11 +1,13 @@
-<?
-	require_once('mucalendar.php');
+<?php
+	require_once('mucalendar.php');	
 	
 	class UniversityCalendar extends MUCalendar
 	{
 		public $category = '';				
 		public $upcomingEvents = array();
 		public $ongoingEvents = array();
+		
+		private $restrictedCats = array('dining','mu-lancaster','music', 'ware-center');		
 		
 		public function __construct(array $config) 
 		{																	
@@ -46,8 +48,8 @@
 			$this->setPeriodStart();
 			$this->setPeriodEnd();	
 
-			if ((date('Y') - date('Y', $this->userDate)) == 0) {
-				$this->xml = simplexml_load_file($this->urlToCalendar."events/events-min.xml");						
+			if ((date('Y') - date('Y', $this->userDate)) <= 0) {
+				$this->xml = simplexml_load_file($this->urlToCalendar."events/events.xml");						
 			} else {
 				$this->xml = simplexml_load_file($this->urlToCalendar."events/".date('Y', $this->userDate)."-events.xml");		
 			}			
@@ -108,11 +110,15 @@
 									if (!in_array($this->category, $categories)) {									
 										break;
 									}
-								} else {
-									// We don't want to show the following categories unless the user specifies them directly.
-									$restricted_cats = array('dining');
-									if (array_intersect($restricted_cats, $categories)) {
-										break;
+								} else {									
+									// We don't want to show the following categories unless the user specifies them directly
+									// or the event is designated as a University event.
+									if (array_intersect($this->restrictedCats, $categories)) {
+										// If the event is not specified as University, leave it out.
+										// Else, we still want it to show up...
+										if (!in_array('university', $categories)) {
+											break;
+										}
 									}
 								}
 								
@@ -200,10 +206,16 @@
 								$eventFound = true;
 							}
 						} else {
-							// We don't want to show the following categories unless the user specifies them directly.
-							$restricted_cats = array('dining');
-							if (!array_intersect($restricted_cats, $categories)) {
+							// We don't want to show the following categories unless the user specifies them directly
+							// or the event is designated as a University event.
+							if (!array_intersect($this->restrictedCats, $categories)) {
 								$eventFound = true;
+							} else {
+								// If the event is not specified as University, leave it out.
+								// Else, we still want it to show up...
+								if (in_array('university', $categories)) {
+									$eventFound = true;									
+								}
 							}
 						}
 						
@@ -254,9 +266,9 @@
 					'cultural' => 'Cultural',
 					'dining' => 'Dining',
 					'music' => 'Music',
-					'mu-lancaster' => 'MU Lancaster',
 					'student' => 'Student',
-					'university' => 'University'
+					'university' => 'University',
+					'ware-center' => 'Ware Center'
 				);
 			
 			$output = '<ul>';
@@ -310,6 +322,7 @@
 				'featured' => (string)$event->attributes()->featured,
 				'shortdesc' => $this->_cleanShoutedWords($this->_cleanCharacterEncoding(utf8_decode((string)$event->shortdesc))),
 				'fulldesc' => $this->_cleanCharacterEncoding(utf8_decode($fullDesc)),
+				'ticketinfo' => (string)$event->ticketinfo,				
 				'location' => (string)$event->location,
 				'image' => array(
 					'thumb' => (string)$event->image->thumb, 
