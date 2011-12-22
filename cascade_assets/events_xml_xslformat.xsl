@@ -57,6 +57,7 @@
 			<categories>
 				<xsl:apply-templates select="system-data-structure/audience/applicable-audiences/value" />
 			</categories>
+			<ticketinfo><xsl:value-of select="system-data-structure/event-ticketinfo" /></ticketinfo>
 			<location><xsl:value-of select="system-data-structure/event-location" /></location>
 			<contact>
 				<name><xsl:value-of select="system-data-structure/event-contact/name" /></name>

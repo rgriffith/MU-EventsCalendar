@@ -5,10 +5,10 @@
       <checkbox-item value="Athletics"/>
       <checkbox-item value="Cultural"/>
       <checkbox-item value="Dining"/>
-      <checkbox-item value="MU-Lancaster"/>     
-      <checkbox-item value="Music"/>      
+      <checkbox-item value="Music"/>    
       <checkbox-item value="Student"/>
       <checkbox-item value="University"/>
+      <checkbox-item value="Ware-Center"/> 
     </text>
     <text type="radiobutton" identifier="homepage" label="Display on Homepage?" restrict-to-groups="administration, Calendar Admin, Cultural Calendar, Academic Calendar" default="No">
       <radio-item value="Yes"/>
@@ -19,7 +19,8 @@
     <text multi-line="true" identifier="short-description" label="Short Description" required="true" rows="5" cols="40"/>
     <text wysiwyg="true" identifier="full-description" label="Full Description" required="true"/>
   </group>
-  <text identifier="event-location" label="Event Location"/>
+  <text identifier="event-ticketinfo" label="Ticket Information" required="true"/>
+  <text identifier="event-location" label="Event Location" required="true"/>
   <group identifier="event-image" label="Images">
     <asset type="file" identifier="thumb" label="Thumbnail"/>
     <asset type="file" identifier="large" label="Full Size"/>
