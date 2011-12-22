@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	
 	$_SESSION['QUERY_STRING'] = $_SERVER['QUERY_STRING'];
@@ -23,7 +23,7 @@
         $args['mode'] = 'index';
 	} else {
 		// If a date and/or mode were given, validate them.      
-		$args['date'] = isset($_GET['date']) && preg_match('/^[0-9]{2}-[0-9]{2}-[0-9]{4}$/', $_GET['date']) ? $_GET['date'] : '';
+		$args['date'] = isset($_GET['date']) && preg_match('/^[0-9]{2}-[0-9]{2}-[0-9]{4}$/', $_GET['date']) ? $_GET['date'] : $time_now;
 		$args['mode'] = isset($_GET['mode']) && in_array($_GET['mode'], array('day','week','month','index')) ? $_GET['mode'] : 'month';
 	}
 	
