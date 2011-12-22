@@ -15,7 +15,7 @@ calendar
 --eventrequest
 --rss.php
 
-The current year (and future years) has an index block assigned to it, which will build the current year's XML. XML files
+The current year (and future years) has an index block assigned to it, which will build the event XML. XML files
 from previous years are archived and anything older than a year is removed completely from Cascade, including images.
 
 The "pending" folder is where submissions to the event request form are created. The process for the form uses
@@ -53,9 +53,12 @@ rss.php
 INCLUDED CASCADE FILES (cascade_assets):
 
 events_xml_xslformat.xsl 
-	The XSL Format that generates an XML dump of the current year's events 
-	using an index block that is assigned at the year level.
+	The XSL Format that generates an XML dump of the current and upcoming year's events 
+	using an index block that is assigned at the events folder level.
 
+events_truncatedxml_xslformat.xsl 
+	The XSL Format that generates an abridged XML dump of the latest 10 upcoming events 
+	using an index block that is assigned at the events folder level.
 
 events_xml_template.xml
 	The template for the year's XML file. The DEFAULT region is assigned the above XSL.
